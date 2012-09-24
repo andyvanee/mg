@@ -88,7 +88,7 @@ getcolpos(void)
 		    && !(curbp->b_flag & BFNOTAB)
 #endif /* NOTAB */
 			) {
-			col |= 0x07;
+			col |= 0x03;
 			col++;
 		} else if (ISCTRL(c) != FALSE)
 			col += 2;
@@ -337,7 +337,7 @@ lfindent(int f, int n)
 			if (c != ' ' && c != '\t')
 				break;
 			if (c == '\t')
-				nicol |= 0x07;
+				nicol |= 0x03;
 			++nicol;
 		}
 		if (lnewline() == FALSE || ((

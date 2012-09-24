@@ -246,7 +246,7 @@ getindent(const struct line *lp, int *curi)
 		    && !(curbp->b_flag & BFNOTAB)
 #endif /* NOTAB */
 		    ) {
-			nicol |= 0x07;
+			nicol |= 0x03;
 		}
 		nicol++;
 	}
@@ -421,7 +421,7 @@ findcolpos(const struct buffer *bp, const struct line *lp, int lo)
 		    && !(bp->b_flag & BFNOTAB)
 #endif /* NOTAB */
 			) {
-			col |= 0x07;
+			col |= 0x03;
 			col++;
 		} else if (ISCTRL(c) != FALSE)
 			col += 2;

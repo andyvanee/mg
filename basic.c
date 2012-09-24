@@ -231,7 +231,7 @@ getgoal(struct line *dlp)
 		    && !(curbp->b_flag & BFNOTAB)
 #endif
 			) {
-			col |= 0x07;
+			col |= 0x03;
 			col++;
 		} else if (ISCTRL(c) != FALSE) {
 			col += 2;

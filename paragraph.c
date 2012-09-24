@@ -295,7 +295,7 @@ fillword(int f, int n)
 		    && !(curbp->b_flag & BFNOTAB)
 #endif
 			)
-			col |= 0x07;
+			col |= 0x03;
 		else if (ISCTRL(c) != FALSE)
 			++col;
 	}

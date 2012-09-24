@@ -312,7 +312,7 @@ vtputc(int c)
 	else if (c == '\t') {
 		do {
 			vtputc(' ');
-		} while (vtcol < ncol && (vtcol & 0x07) != 0);
+		} while (vtcol < ncol && (vtcol & 0x03) != 0);
 	} else if (ISCTRL(c)) {
 		vtputc('^');
 		vtputc(CCHR(c));
@@ -344,7 +344,7 @@ vtpute(int c)
 	else if (c == '\t') {
 		do {
 			vtpute(' ');
-		} while (((vtcol + lbound) & 0x07) != 0 && vtcol < ncol);
+		} while (((vtcol + lbound) & 0x03) != 0 && vtcol < ncol);
 	} else if (ISCTRL(c) != FALSE) {
 		vtpute('^');
 		vtpute(CCHR(c));
@@ -495,7 +495,7 @@ update(void)
 	while (i < curwp->w_doto) {
 		c = lgetc(lp, i++);
 		if (c == '\t') {
-			curcol |= 0x07;
+			curcol |= 0x03;
 			curcol++;
 		} else if (ISCTRL(c) != FALSE)
 			curcol += 2;
