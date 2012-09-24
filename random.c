@@ -344,8 +344,8 @@ lfindent(int f, int n)
 #ifdef	NOTAB
 		    curbp->b_flag & BFNOTAB) ? linsert(nicol, ' ') == FALSE : (
 #endif /* NOTAB */
-		    ((i = nicol / 8) != 0 && linsert(i, '\t') == FALSE) ||
-		    ((i = nicol % 8) != 0 && linsert(i, ' ') == FALSE)))) {
+		    ((i = nicol / 4) != 0 && linsert(i, '\t') == FALSE) ||
+		    ((i = nicol % 4) != 0 && linsert(i, ' ') == FALSE)))) {
 			s = FALSE;
 			break;
 		}
@@ -380,8 +380,8 @@ indent(int f, int n)
 #ifdef	NOTAB
 	    (curbp->b_flag & BFNOTAB) ? linsert(n, ' ') == FALSE :
 #endif /* NOTAB */
-	    (((i = n / 8) != 0 && linsert(i, '\t') == FALSE) ||
-	    ((i = n % 8) != 0 && linsert(i, ' ') == FALSE)))
+	    (((i = n / 4) != 0 && linsert(i, '\t') == FALSE) ||
+	    ((i = n % 4) != 0 && linsert(i, ' ') == FALSE)))
 		return (FALSE);
 
 	forwchar(FFRAND, soff);
@@ -448,7 +448,7 @@ space_to_tabstop(int f, int n)
 		return (FALSE);
 	if (n == 0)
 		return (TRUE);
-	return (linsert((n << 3) - (curwp->w_doto & 7), ' '));
+	return (linsert(4, ' '));
 }
 #endif /* NOTAB */
 

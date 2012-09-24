@@ -19,9 +19,9 @@
 extern int changemode(int, int, char *);
 
 static int cc_strip_trailp = TRUE;	/* Delete Trailing space? */
-static int cc_basic_indent = 8;		/* Basic Indent multiple */
+static int cc_basic_indent = 4;		/* Basic Indent multiple */
 static int cc_cont_indent = 4;		/* Continued line indent */
-static int cc_colon_indent = -8;	/* Label / case indent */
+static int cc_colon_indent = -4;	/* Label / case indent */
 
 static int getmatch(int, int);
 static int getindent(const struct line *, int *);
