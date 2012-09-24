@@ -309,11 +309,7 @@ vtputc(int c)
 	vp = vscreen[vtrow];
 	if (vtcol >= ncol)
 		vp->v_text[ncol - 1] = '$';
-	else if (c == '\t'
-#ifdef	NOTAB
-	    && !(curbp->b_flag & BFNOTAB)
-#endif
-	    ) {
+	else if (c == '\t') {
 		do {
 			vtputc(' ');
 		} while (vtcol < ncol && (vtcol & 0x07) != 0);
@@ -345,11 +341,7 @@ vtpute(int c)
 	vp = vscreen[vtrow];
 	if (vtcol >= ncol)
 		vp->v_text[ncol - 1] = '$';
-	else if (c == '\t'
-#ifdef	NOTAB
-	    && !(curbp->b_flag & BFNOTAB)
-#endif
-	    ) {
+	else if (c == '\t') {
 		do {
 			vtpute(' ');
 		} while (((vtcol + lbound) & 0x07) != 0 && vtcol < ncol);
@@ -502,11 +494,7 @@ update(void)
 	i = 0;
 	while (i < curwp->w_doto) {
 		c = lgetc(lp, i++);
-		if (c == '\t'
-#ifdef	NOTAB
-		    && !(curbp->b_flag & BFNOTAB)
-#endif
-			) {
+		if (c == '\t') {
 			curcol |= 0x07;
 			curcol++;
 		} else if (ISCTRL(c) != FALSE)
